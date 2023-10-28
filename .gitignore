@@ -1,0 +1,10 @@
+.vs/*
+.vscode/*
+**/bin/*
+**/obj/*
+**/local.settings.json
+**/appsettings.json
+**/appsettings.*.json
+**/.DS_Store
+.env
+workspace.code-workspace

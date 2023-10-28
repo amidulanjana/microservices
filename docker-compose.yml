@@ -1,0 +1,8 @@
+version: '3'
+services:
+  auth-service:
+    build:
+      context: AuthService/.
+      dockerfile: ./Dockerfile
+      args:
+        DbConnection: ${DbConnection}
