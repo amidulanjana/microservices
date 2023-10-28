@@ -1,5 +1,5 @@
-using AuthService.Models;
-using AuthService.Repositories;
+using CalendarService.Models;
+using CalendarService.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 string connection = Environment.GetEnvironmentVariable("DB_CONNECTION");
 
-builder.Services.AddDbContext<AuthContext>(options => options.UseSqlServer(connection));
+builder.Services.AddDbContext<CalendarDbContext>(options => options.UseSqlServer(connection));
 builder.Services.AddScoped<UsersRepository>();
 
 builder.Services.AddControllers();

@@ -4,3 +4,6 @@ services:
   auth-service:
     ports:
       - "3000:80"
+  calendar-service:
+    ports:
+      - "51080:80"

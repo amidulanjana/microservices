@@ -5,4 +5,10 @@ services:
       context: AuthService/.
       dockerfile: ./Dockerfile
       args:
-        DbConnection: ${DbConnection}
+        DbConnection: ${AuthDbConnection}
+  calendar-service:
+    build:
+      context: CalendarService/.
+      dockerfile: ./Dockerfile
+      args:
+        DbConnection: ${CalendarDbConnection}
