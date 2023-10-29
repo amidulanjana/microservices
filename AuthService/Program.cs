@@ -1,14 +1,16 @@
 using AuthService.Models;
 using AuthService.Repositories;
+using AuthService.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-string connection = Environment.GetEnvironmentVariable("DB_CONNECTION");
+string connection = Environment.GetEnvironmentVariable("DB_CONNECTION")!;
 
 builder.Services.AddDbContext<AuthContext>(options => options.UseSqlServer(connection));
+builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<UsersRepository>();
 
 builder.Services.AddControllers();

@@ -1,14 +1,17 @@
 using CalendarService.Models;
 using CalendarService.Repositories;
+using CalendarService.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-string connection = Environment.GetEnvironmentVariable("DB_CONNECTION");
+string connection = Environment.GetEnvironmentVariable("DB_CONNECTION")!;
 
 builder.Services.AddDbContext<CalendarDbContext>(options => options.UseSqlServer(connection));
+builder.Services.AddScoped<UserService>();
+builder.Services.AddHostedService<UserCreateService>();
 builder.Services.AddScoped<UsersRepository>();
 
 builder.Services.AddControllers();

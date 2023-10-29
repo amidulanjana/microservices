@@ -6,9 +6,11 @@ services:
       dockerfile: ./Dockerfile
       args:
         DbConnection: ${AuthDbConnection}
+        ServiceBusConnection: ${ServiceBusConnection}
   calendar-service:
     build:
       context: CalendarService/.
       dockerfile: ./Dockerfile
       args:
         DbConnection: ${CalendarDbConnection}
+        ServiceBusConnection: ${ServiceBusConnection}

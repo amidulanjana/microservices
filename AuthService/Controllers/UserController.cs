@@ -1,5 +1,6 @@
 using AuthService.Models;
 using AuthService.Repositories;
+using AuthService.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuthService.Controllers
@@ -9,26 +10,26 @@ namespace AuthService.Controllers
   public class UsersController : ControllerBase
   {
     private readonly ILogger<UsersController> logger;
-    private readonly UsersRepository usersRepository;
+    private readonly UserService userService;
 
     public UsersController(
-        UsersRepository usersRepository,
+        UserService userService,
         ILogger<UsersController> logger)
     {
       this.logger = logger;
-      this.usersRepository = usersRepository;
+      this.userService = userService;
     }
 
     [HttpGet()]
     public async Task<ActionResult<IList<User>>> Get()
     {
-      return Ok(await this.usersRepository.Get());
+      return Ok(await this.userService.GetUsers());
     }
 
     [HttpPost()]
     public async Task<ActionResult<User>> Post([FromBody] User user)
     {
-      return Ok(await this.usersRepository.Add(user));
+      return Ok(await this.userService.AddUser(user));
     }
 
   }
